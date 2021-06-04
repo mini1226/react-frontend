@@ -8,7 +8,7 @@ class AddEmployeeComponent extends Component {
         this.state = {
             firstname: '',
             lastname: '',
-            emailid: ''
+            email: ''
         }
         this.changeFirstNameHandler = this.changeFirstNameHandler.bind(this);
         this.changeLastNameHandler = this.changeLastNameHandler.bind(this);
@@ -18,11 +18,11 @@ class AddEmployeeComponent extends Component {
     }
 
     saveEmployee=(e)=> {
-        alert('A name was submitted: ' + this.state.firstname + this.state.lastname + this.state.emailid);
+        alert('A name was submitted: ' + this.state.firstname + this.state.lastname + this.state.email);
         e.preventDefault();
-        let employee = {firstname: this.state.firstname, lastname: this.state.lastname, emailid: this.state.emailid};
+        let employee = {firstname: this.state.firstname, lastname: this.state.lastname, email: this.state.email};
         console.log(`employee : `,employee)
-        EmployeeService.addEmployee(employee).then(res => {        this.props.history.push('/employees')
+        EmployeeService.addEmployee(employee).then(res => {this.props.history.push('/employees')
     })
     
     }
@@ -35,7 +35,7 @@ class AddEmployeeComponent extends Component {
         this.setState({lastname: event.target.value});
     }
     changeEmailHandler= (event) =>{
-        this.setState({emailid: event.target.value});
+        this.setState({email: event.target.value});
     }
     cancel(){
         this.props.history.push('/employees')
@@ -65,8 +65,8 @@ class AddEmployeeComponent extends Component {
 
                                     <div className="form-group">
                                         <label>EmailId :</label>
-                                        <input placeholder="Email" name = "emailid" className = "form-control"
-                                         value={this.state.emailid} onChange={this.changeEmailHandler}/>
+                                        <input placeholder="Email" name = "email" className = "form-control"
+                                         value={this.state.email} onChange={this.changeEmailHandler}/>
                                     </div>
 
 
